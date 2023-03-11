@@ -1,0 +1,195 @@
+{% extends 'base.html' %}
+{% block main %}
+
+<body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const attendance = JSON.parse("{{data['attendancelist']}}")
+            const attendanceLabels = ["75%", "80%", "85%", "90%", "95%", "100%"];
+
+            console.log(attendance)
+
+            // BMI data
+            const bmi = JSON.parse("{{data['bmilist']}}")
+            const bmiLabels = ["Underweight", "Normal", "Overweight", "Obese Class I", "Obese Class II", "Obese Class III"];
+
+            console.log(bmi)
+
+            // Create attendance chart
+            const attendanceChart = new Chart(document.getElementById("attendanceChart"), {
+                type: 'bar',
+                data: {
+                    labels: attendanceLabels,
+                    datasets: [{
+                        label: 'Attendance',
+                        data: attendance,
+                        backgroundColor: '#3498db'
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 10
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Create BMI chart
+            const bmiChart = new Chart(document.getElementById("bmiChart"), {
+                type: 'bar',
+                data: {
+                    labels: bmiLabels,
+                    datasets: [{
+                        label: 'BMI',
+                        data: bmi,
+                        backgroundColor: '#e74c3c'
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 5
+                            }
+                        }
+                    }
+                }
+            });
+        });
+
+    </script>
+
+    <header class="w-full">
+
+        <nav class="bg-white border-gray-200 py-2.5">
+
+            <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
+
+                <div class="flex gap-3">
+                    <a href="/admin" class="flex items-center">
+                        <img src="{{ url_for('static', filename='assets/logo.svg') }}" class="h-6 mr-3 sm:h-9"
+                            alt="Poshan Logo" />
+                        <span class="self-center text-xl font-semibold whitespace-nowrap">Poshan</span>
+                    </a>
+
+                    <img src="{{ url_for('static', filename='assets/g20.png') }}" class="h-6 sm:h-9" alt="G20 Logo" />
+
+                    <img src="{{ url_for('static', filename='assets/poshan.png')}}" class="h-6 sm:h-9" alt="Gov Logo" />
+                </div>
+
+                <a href="/logout"
+                    class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 focus:outline-none ">
+                    Logout
+                </a>
+            </div>
+
+        </nav>
+
+    </header>
+
+    <div class="text-center">
+        <h1 class="my-9 text-2xl font-extrabold tracking-tight md:text-3xl xl:text-5xl">
+            School {{data["schoolid"]}}
+        </h1>
+    </div>
+
+    <div class="w-full flex justify-center">
+        <div class="w-fit justify-center mt-8 drop-shadow-lg sm:grid sm:grid-cols-2 md:grid-cols-3">
+            <div class="bg-gray-100 rounded-md p-4 w-fit m-10 hover:scale-[1.1]">
+                <div class="text-lg font-medium text-gray-600">School ID</div>
+                <div class="text-3xl font-bold text-gray-900">{{data["schoolid"]}}</div>
+            </div>
+
+            <div class="bg-gray-100 rounded-md p-4 w-fit m-10 hover:scale-[1.1]">
+                <div class="text-lg font-medium text-gray-600">Location</div>
+                <div class="text-3xl font-bold text-gray-900">{{data["location"]}}</div>
+            </div>
+
+            <div class="bg-gray-100 rounded-md p-4 w-fit m-10 hover:scale-[1.1]">
+                <div class="text-lg font-medium text-gray-600">Contact</div>
+                <div class="text-3xl font-bold text-gray-900">{{data["contact"]}}</div>
+            </div>
+
+            <div class="bg-gray-100 rounded-md p-4 w-fit m-10 hover:scale-[1.1]">
+                <div class="text-lg font-medium text-gray-600">Last Menu Update</div>
+                <div class="text-3xl font-bold text-gray-900">{{data["menuupdate"]}}</div>
+            </div>
+
+            <div class="bg-gray-100 rounded-md p-4 w-fit m-10 hover:scale-[1.1]">
+                <div class="text-lg font-medium text-gray-600">Average BMI</div>
+                <div class="text-3xl font-bold text-gray-900">{{data["avgbmi"]}}</div>
+            </div>
+
+            <div class="bg-gray-100 rounded-md p-4 w-fit m-10 hover:scale-[1.1]">
+                <div class="text-lg font-medium text-gray-600">Average Height (in cms)</div>
+                <div class="text-3xl font-bold text-gray-900">{{data["avght"]}}</div>
+            </div>
+
+            <div class="bg-gray-100 rounded-md p-4 w-fit m-10 hover:scale-[1.1]">
+                <div class="text-lg font-medium text-gray-600">Average Weight (in kgs)</div>
+                <div class="text-3xl font-bold text-gray-900">{{data["avgwt"]}}</div>
+            </div>
+
+            <div class="bg-gray-100 rounded-md p-4 w-fit m-10 hover:scale-[1.1]">
+                <div class="text-lg font-medium text-gray-600">BMI Under Weight Count</div>
+                <div class="text-3xl font-bold text-gray-900">{{data["uw"]}}</div>
+            </div>
+
+            <div class="bg-gray-100 rounded-md p-4 w-fit m-10 hover:scale-[1.1]">
+                <div class="text-lg font-medium text-gray-600">BMI Normal Weight Count</div>
+                <div class="text-3xl font-bold text-gray-900">{{data["nw"]}}</div>
+            </div>
+
+            <div class="bg-gray-100 rounded-md p-4 w-fit m-10 hover:scale-[1.1]">
+                <div class="text-lg font-medium text-gray-600">BMI Over Weight Count</div>
+                <div class="text-3xl font-bold text-gray-900">{{data["ow"]}}</div>
+            </div>
+
+            <div class="bg-gray-100 rounded-md p-4 w-fit m-10 hover:scale-[1.1]">
+                <div class="text-lg font-medium text-gray-600">BMI Obese Count</div>
+                <div class="text-3xl font-bold text-gray-900">{{data["obs"]}}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <h1 class="my-9 text-2xl font-extrabold tracking-tight md:text-3xl xl:text-5xl">
+            Attendance
+        </h1>
+    </div>
+
+    <canvas id="attendanceChart"></canvas>
+
+    <div class="text-center">
+        <h1 class="my-9 text-2xl font-extrabold tracking-tight md:text-3xl xl:text-5xl">
+            BMI
+        </h1>
+    </div>
+
+    <canvas id="bmiChart"></canvas>
+
+
+    <footer class="bg-white remove:bg-gray-800 pb-10">
+        <div class="max-w-screen-xl p-4 py-6 mx-auto lg:py-5 md:p-8 lg:p-10">
+
+            <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8">
+            <div class="text-center">
+
+                <img src="{{ url_for('static', filename='assets/logo_row.png') }}" alt="All Logos" />
+
+                <span class="block text-sm text-center text-gray-500">© 2023-2024 Poshan. All
+                    Rights Reserved. Built with Love and Coffee
+                </span>
+
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+{% endblock %}

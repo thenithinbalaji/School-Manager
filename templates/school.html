@@ -1,0 +1,266 @@
+{% extends 'base.html' %}
+{% block main %}
+
+<body>
+    <header class="w-full">
+
+        <nav class="bg-white border-gray-200 py-2.5">
+
+            <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
+
+                <div class="flex gap-3">
+                    <a href="/school" class="flex items-center">
+                        <img src="{{ url_for('static', filename='assets/logo.svg') }}" class="h-6 mr-3 sm:h-9"
+                            alt="Poshan Logo" />
+                        <span class="self-center text-xl font-semibold whitespace-nowrap">Poshan</span>
+                    </a>
+
+                    <img src="{{ url_for('static', filename='assets/g20.png') }}" class="h-6 sm:h-9" alt="G20 Logo" />
+
+                    <img src="{{ url_for('static', filename='assets/poshan.png')}}" class="h-6 sm:h-9" alt="Gov Logo" />
+                </div>
+
+                <a href="/logout"
+                    class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 focus:outline-none ">
+                    Logout
+                </a>
+            </div>
+
+        </nav>
+
+    </header>
+
+    <section class="bg-white">
+        <div class="max-w-screen-xl px-4 py-8 mx-auto lg:py-24 lg:px-6">
+            <div class="max-w-screen-md mx-auto mb-8 text-center lg:mb-12">
+                <h2 class="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 remove:text-white">
+                    Welcome Back To Poshan
+                </h2>
+                <p class="mb-5 font-light text-gray-500 sm:text-xl">
+                    The data entered here will be sent to health officer. Health Officer might request you to submit the
+                    data again in case of any grievances. <br /> <br />
+                </p>
+            </div>
+
+            <div
+                class="lg:grid lg:grid-cols-4 md:grid md:grid-cols-2 sm:grid sm:grid-cols-2 flex flex-col gap-12 my-16">
+                <div>
+                    <svg class="w-10 h-10 mb-2 text-blue-600 md:w-12 md:h-12 remove:text-blue-500" fill="currentColor"
+                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M2 5a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm14 1a1 1 0 11-2 0 1 1 0 012 0zM2 13a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2zm14 1a1 1 0 11-2 0 1 1 0 012 0z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                    <h3 class="mb-2 text-2xl font-bold remove:text-white">Poshan ID</h3>
+                    <p class="font-light text-gray-500">
+                        {{data.poshanid}}
+                    </p>
+                </div>
+                <div>
+                    <svg class="w-10 h-10 mb-2 text-blue-600 md:w-12 md:h-12 remove:text-blue-500" fill="currentColor"
+                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z">
+                        </path>
+                    </svg>
+                    <h3 class="mb-2 text-2xl font-bold remove:text-white">School Strength</h3>
+                    <p class="font-light text-gray-500">
+                        {{data.studentscount}}
+                    </p>
+                </div>
+                <div>
+                    <svg class="w-10 h-10 mb-2 text-blue-600 md:w-12 md:h-12 remove:text-blue-500" fill="currentColor"
+                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 .34-.028.675-.083 1H15a2 2 0 00-2 2v2.197A5.973 5.973 0 0110 16v-2a2 2 0 00-2-2 2 2 0 01-2-2 2 2 0 00-1.668-1.973z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                    <h3 class="mb-2 text-2xl font-bold remove:text-white">Location</h3>
+                    <p class="font-light text-gray-500">
+                        {{data.address}}
+                    </p>
+                </div>
+                <div>
+                    <svg class="w-10 h-10 mb-2 text-blue-600 md:w-12 md:h-12 remove:text-blue-500" fill="currentColor"
+                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M2 5a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm14 1a1 1 0 11-2 0 1 1 0 012 0zM2 13a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2zm14 1a1 1 0 11-2 0 1 1 0 012 0z">
+                        </path>
+                    </svg>
+                    <h3 class="mb-2 text-2xl font-bold remove:text-white">School Incharge</h3>
+                    <p class="font-light text-gray-500">{{data.incharge}}</p>
+                </div>
+
+            </div>
+
+            <div class="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0 mt-8">
+                <!-- Pricing Card -->
+                <div
+                    class="flex flex-col max-w-lg p-6 mx-auto text-center text-gray-900 bg-white border border-gray-100 rounded-lg shadow  xl:p-8 remove:bg-gray-800 remove:text-white">
+                    <h3 class="mb-4 text-2xl font-semibold">Attendance</h3>
+                    <p class="font-light text-gray-500 sm:text-lg">Upload Today's Attendance</p>
+                    <div class="flex items-baseline justify-center my-8">
+                        <span class="mr-2 text-5xl font-extrabold">Once</span>
+                        <span class="text-gray-500">/per day</span>
+                    </div>
+                    <!-- List -->
+                    <ul role="list" class="mb-8 space-y-4 text-left">
+                        <li class="flex items-center space-x-3">
+                            <!-- Icon -->
+                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 remove:text-green-400" fill="currentColor"
+                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Choose Class</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <!-- Icon -->
+                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 remove:text-green-400" fill="currentColor"
+                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Choose Student</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <!-- Icon -->
+                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 remove:text-green-400" fill="currentColor"
+                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Mark Attendance</span>
+                        </li>
+
+                    </ul>
+                    <a href="school/attendance"
+                        class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center remove:text-white  remove:focus:ring-blue-900">
+                        Mark Attendance
+                    </a>
+                </div>
+
+                <!-- Pricing Card -->
+                <div
+                    class="flex flex-col max-w-lg p-6 mx-auto text-center text-gray-900 bg-white border border-gray-100 rounded-lg shadow  xl:p-8 remove:bg-gray-800 remove:text-white">
+                    <h3 class="mb-4 text-2xl font-semibold">Menu</h3>
+                    <p class="font-light text-gray-500 sm:text-lg">Upload Today's Menu</p>
+                    <div class="flex items-baseline justify-center my-8">
+                        <span class="mr-2 text-5xl font-extrabold">Once</span>
+                        <span class="text-gray-500">/per day</span>
+                    </div>
+                    <!-- List -->
+                    <ul role="list" class="mb-8 space-y-4 text-left">
+                        <li class="flex items-center space-x-3">
+                            <!-- Icon -->
+                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 remove:text-green-400" fill="currentColor"
+                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Choose Menu Items</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <!-- Icon -->
+                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 remove:text-green-400" fill="currentColor"
+                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Govt Recommended Menu</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <!-- Icon -->
+                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 remove:text-green-400" fill="currentColor"
+                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Sumbit Menu</span>
+                        </li>
+
+                    </ul>
+                    <a href="school/menu"
+                        class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center remove:text-white  remove:focus:ring-blue-900">
+                        Upload Menu</a>
+                </div>
+                <!-- Pricing Card -->
+                <div
+                    class="flex flex-col max-w-lg p-6 mx-auto text-center text-gray-900 bg-white border border-gray-100 rounded-lg shadow  xl:p-8 remove:bg-gray-800 remove:text-white">
+                    <h3 class="mb-4 text-2xl font-semibold">Health Data</h3>
+                    <p class="font-light text-gray-500 sm:text-lg">
+                        Upload This Month's Health Data
+                    </p>
+                    <div class="flex items-baseline justify-center my-8">
+                        <span class="mr-2 text-5xl font-extrabold">Once</span>
+                        <span class="text-gray-500">/per month</span>
+                    </div>
+                    <!-- List -->
+                    <ul role="list" class="mb-8 space-y-4 text-left">
+                        <li class="flex items-center space-x-3">
+                            <!-- Icon -->
+                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 remove:text-green-400" fill="currentColor"
+                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Choose Class</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <!-- Icon -->
+                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 remove:text-green-400" fill="currentColor"
+                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Select Student</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <!-- Icon -->
+                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 remove:text-green-400" fill="currentColor"
+                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Enter Height and Weight</span>
+                        </li>
+                    </ul>
+                    <a href="school/health"
+                        class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center remove:text-white  remove:focus:ring-blue-900">
+                        Upload Health Data
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white remove:bg-gray-800 pb-10">
+        <div class="max-w-screen-xl p-4 py-6 mx-auto lg:py-5 md:p-8 lg:p-10">
+
+            <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8">
+            <div class="text-center">
+
+                <img src="{{ url_for('static', filename='assets/logo_row.png') }}" alt="All Logos" />
+
+                <span class="block text-sm text-center text-gray-500">© 2023-2024 Poshan. All
+                    Rights Reserved. Built with Love and Coffee
+                </span>
+
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+
+
+{% endblock %}

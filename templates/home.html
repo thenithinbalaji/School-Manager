@@ -1,0 +1,326 @@
+{% extends 'base.html' %}
+{% block main %}
+
+<body>
+
+    <!-- Nav Bar -->
+    <header class="fixed w-full">
+
+        <nav class="bg-white border-gray-200 py-2.5">
+
+            <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
+
+                <div class="flex gap-3">
+                    <a href="#" class="flex items-center">
+                        <img src="{{ url_for('static', filename='assets/logo.svg') }}" class="h-6 mr-3 sm:h-9"
+                            alt="Poshan Logo" />
+                        <span class="self-center text-xl font-semibold whitespace-nowrap">Poshan</span>
+                    </a>
+
+                    <img src="{{ url_for('static', filename='assets/g20.png') }}" class="hidden lg:block h-6 sm:h-9"
+                        alt="G20 Logo" />
+
+                    <img src="{{ url_for('static', filename='assets/poshan.png')}}" class="hidden lg:block h-6 sm:h-9"
+                        alt="Gov Logo" />
+                </div>
+
+                <div class="flex items-center lg:order-2">
+
+                    <a href="/login"
+                        class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 focus:outline-none ">
+                        Login
+                    </a>
+
+                    <button data-collapse-toggle="mobile-menu-2" type="button"
+                        class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+                        aria-controls="mobile-menu-2" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                        <svg class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="items-center justify-between hidden w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
+                    <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+                        <li>
+                            <a href="#home"
+                                class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0 lg:remove:hover:text-white remove:hover:bg-gray-700 remove:hover:text-white lg:remove:hover:bg-transparent"
+                                aria-current="page">Home</a>
+                        </li>
+                        <li>
+                            <a href="#about"
+                                class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0 lg:remove:hover:text-white remove:hover:bg-gray-700 remove:hover:text-white lg:remove:hover:bg-transparent">About</a>
+                        </li>
+                        <li>
+                            <a href="#faq"
+                                class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0 lg:remove:hover:text-white remove:hover:bg-gray-700 remove:hover:text-white lg:remove:hover:bg-transparent">FAQs</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </nav>
+
+    </header>
+    <!-- End block -->
+
+    <!-- Start block -->
+    <section class="bg-white remove:bg-gray-900" id="home">
+        <div class="grid max-w-screen-xl px-4 pt-20 pb-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 lg:pt-28">
+            <div class="mr-auto place-self-center lg:col-span-7">
+                <h1 class="max-w-2xl mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl">
+                    Automated Reporting<br>& Management System.
+                </h1>
+
+                <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl">
+                    System Developed for tracking nutrition and health of students in primary schools of Maharashtra.
+                    <br /> <br />
+                    Number of Registered Schools - {{schoolcount}} <br />
+                    Number of Registered Students - {{studentcount}}
+
+                </p>
+
+            </div>
+
+            <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
+                <img src="{{ url_for('static', filename='assets/hero.png') }}" alt="hero image">
+            </div>
+
+        </div>
+
+
+        <img src="{{ url_for('static', filename='assets/logo_row.png') }}" alt="All Logos" />
+
+    </section>
+    <!-- End block -->
+
+    <!-- About block -->
+    <section class="bg-gray-50 remove:bg-gray-800" id="about">
+        <div class="max-w-screen-xl px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6">
+            <!-- Row -->
+            <div class="items-center gap-8 lg:grid lg:grid-cols-2 xl:gap-16">
+
+                <img class="hidden w-full mb-4 rounded-lg lg:mb-0 lg:flex"
+                    src="{{ url_for('static', filename='assets/charts.png') }}" alt="dashboard feature image">
+
+                <div class="text-gray-500 sm:text-lg">
+
+                    <h2 class="mb-4 text-3xl font-extrabold tracking-tight text-gray-900">
+                        About Poshan
+                    </h2>
+
+                    <p class="mb-8 font-light lg:text-xl">
+                        Poshan is India's flagship programme to improve nutritional outcomes for children by leveraging
+                        technology, a targeted approach and convergence. It is designed to measure growth of the child
+                        based on standards defined by World Health Organisation (WHO).
+                    </p>
+                    <!-- List -->
+                    <ul role="list" class="pt-8 space-y-5 border-t border-gray-200 my-7">
+
+                        <li class="flex space-x-3">
+                            <!-- Icon -->
+                            <svg class="flex-shrink-0 w-5 h-5 text-blue-500 remove:text-blue-400" fill="currentColor"
+                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-base font-medium leading-tight text-gray-900">
+                                Graphs & Statistics
+                            </span>
+                        </li>
+
+                        <li class="flex space-x-3">
+                            <!-- Icon -->
+                            <svg class="flex-shrink-0 w-5 h-5 text-blue-500 remove:text-blue-400" fill="currentColor"
+                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-base font-medium leading-tight text-gray-900">
+                                Growth Monitoring
+                            </span>
+                        </li>
+
+                        <li class="flex space-x-3">
+                            <!-- Icon -->
+                            <svg class="flex-shrink-0 w-5 h-5 text-blue-500 remove:text-blue-400" fill="currentColor"
+                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-base font-medium leading-tight text-gray-900">
+                                Student Feedback
+                            </span>
+                        </li>
+
+                    </ul>
+
+                    <p class="mb-8 font-light lg:text-xl">
+                        Students can login using the login id provided by the school to submit feedbacks.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <!-- End block -->
+
+    <!-- FAQs -->
+    <section class="bg-white remove:bg-gray-900 mt-10" id="faq">
+        <div class="max-w-screen-xl px-4 pb-8 mx-auto lg:pb-24 lg:px-6 ">
+            <h2 class="mb-6 text-3xl font-extrabold tracking-tight text-center text-gray-900 lg:mb-8 lg:text-3xl">
+                Frequently asked questions</h2>
+            <div class="max-w-screen-md mx-auto">
+                <div id="accordion-flush" data-accordion="collapse"
+                    data-active-classes="bg-white remove:bg-gray-900 text-gray-900"
+                    data-inactive-classes="text-gray-500">
+
+                    <h3 id="accordion-flush-heading-1">
+                        <button type="button"
+                            class="flex items-center justify-between w-full py-5 font-medium text-left text-gray-900 bg-white border-b border-gray-200 remove:bg-gray-900"
+                            data-accordion-target="#accordion-flush-body-1" aria-expanded="true"
+                            aria-controls="accordion-flush-body-1">
+                            <span>What is Poshan?</span>
+                            <svg data-accordion-icon="" class="w-6 h-6 rotate-180 shrink-0" fill="currentColor"
+                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
+                    </h3>
+
+                    <div id="accordion-flush-body-1" class="" aria-labelledby="accordion-flush-heading-1">
+                        <div class="py-5 border-b border-gray-200">
+
+                            <p class="mb-2 text-gray-500">
+                                Poshan is India's flagship programme to improve nutritional outcomes for children by
+                                leveraging technology, a targeted approach and convergence. It is designed to measure
+                                growth of the child based on standards defined by World Health Organisation (WHO).
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <h3 id="accordion-flush-heading-2">
+                        <button type="button"
+                            class="flex items-center justify-between w-full py-5 font-medium text-left text-gray-500 border-b border-gray-200"
+                            data-accordion-target="#accordion-flush-body-2" aria-expanded="false"
+                            aria-controls="accordion-flush-body-2">
+                            <span>How can I login?</span>
+                            <svg data-accordion-icon="" class="w-6 h-6 shrink-0" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
+                    </h3>
+                    <div id="accordion-flush-body-2" class="hidden" aria-labelledby="accordion-flush-heading-2">
+                        <div class="py-5 border-b border-gray-200">
+                            <p class="mb-2 text-gray-500">
+                                If you are a primary school student, your respective school would have provided you with
+                                your Poshan login credentials for the website. If not, request them to provide the
+                                credentials.
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <h3 id="accordion-flush-heading-4">
+                        <button type="button"
+                            class="flex items-center justify-between w-full py-5 font-medium text-left text-gray-500 border-b border-gray-200"
+                            data-accordion-target="#accordion-flush-body-4" aria-expanded="false"
+                            aria-controls="accordion-flush-body-4">
+                            <span>What about browser support?</span>
+                            <svg data-accordion-icon="" class="w-6 h-6 shrink-0" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
+                    </h3>
+
+                    <div id="accordion-flush-body-4" class="hidden" aria-labelledby="accordion-flush-heading-4">
+                        <div class="py-5 border-b border-gray-200">
+                            <p class="mb-2 text-gray-500">
+                                Our website has been designed and tested to work well on browsers such as Google Chrome,
+                                Mozilla Firefox, Safari, and Microsoft Edge.
+
+                                To ensure the best possible user experience, we recommend using the latest version of
+                                your preferred browser whenever possible. Using an outdated browser may result in slower
+                                performance or compatibility issues, so updating to the latest version can help ensure
+                                that you can fully enjoy our website's features.
+                            </p>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End block -->
+
+
+    <!-- Login Button block -->
+    <section class="bg-gray-50 remove:bg-gray-800">
+        <div class="max-w-screen-xl px-4 py-8 mx-auto lg:py-16 lg:px-6">
+            <div class="max-w-screen-sm mx-auto text-center">
+                <h2 class="mb-4 text-3xl font-extrabold leading-tight tracking-tight text-gray-900">
+                    Submit Feedback for Today's Lunch</h2>
+                <p class="mb-6 font-light text-gray-500 md:text-lg">
+                    Give rating and feedback
+                </p>
+                <a href="/login"
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 remove:bg-blue-600 remove:hover:bg-blue-700 focus:outline-none remove:focus:ring-blue-800">
+                    Login to your student account
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- End block -->
+
+    <!-- Footer block -->
+    <footer class="bg-white remove:bg-gray-800">
+        <div class="max-w-screen-xl p-4 py-6 mx-auto lg:py-16 md:p-8 lg:p-10">
+
+            <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8">
+            <div class="text-center">
+
+                <a href="#" class="flex items-center justify-center mb-5 text-2xl font-semibold text-gray-900">
+                    <img src="{{ url_for('static', filename='assets/logo.svg') }}" class="h-6 mr-3 sm:h-9"
+                        alt="Landwind Logo" />
+                    Poshan
+                </a>
+
+                <span class="block text-sm text-center text-gray-500">© 2023-2024 Poshan. All
+                    Rights Reserved. Built with Love and Coffee
+                </span>
+
+            </div>
+        </div>
+    </footer>
+    <!-- End block -->
+
+    <script src="https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"></script>
+
+</body>
+
+{% endblock %}

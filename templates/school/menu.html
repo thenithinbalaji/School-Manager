@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% block main %}
+
+<body>
+    <header class="w-full">
+
+        <nav class="bg-white border-gray-200 py-2.5">
+
+            <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
+
+                <div class="flex gap-3">
+                    <a href="/school" class="flex items-center">
+                        <img src="{{ url_for('static', filename='assets/logo.svg') }}" class="h-6 mr-3 sm:h-9"
+                            alt="Poshan Logo" />
+                        <span class="self-center text-xl font-semibold whitespace-nowrap">Poshan</span>
+                    </a>
+
+                    <img src="{{ url_for('static', filename='assets/g20.png') }}" class="h-6 sm:h-9" alt="G20 Logo" />
+
+                    <img src="{{ url_for('static', filename='assets/poshan.png')}}" class="h-6 sm:h-9" alt="Gov Logo" />
+                </div>
+
+                <a href="/logout"
+                    class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 focus:outline-none">
+                    Logout
+                </a>
+            </div>
+
+        </nav>
+
+    </header>
+
+    <div class="w-full text-center my-auto">
+        <h1 class="text-2xl font-bold mb-4">Mid-Day Meal Menu</h1>
+        <form method="POST" action="/school/menu" class="mx-auto">
+            <table class="table-auto border-collapse border border-blue-500 mx-auto my-8">
+                <thead>
+                    <tr class="bg-blue-100 text-blue-800">
+                        <th class="py-2 px-4">Item</th>
+                        <th class="py-2 px-4">Quantity (Servings)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="bg-white hover:bg-blue-50">
+                        <td class="border py-2 px-4">Rice</td>
+                        <td class="border py-2 px-4"><input type="number" name="rice" min="0" required></td>
+                    </tr>
+                    <tr class="bg-white hover:bg-blue-50">
+                        <td class="border py-2 px-4">Dal</td>
+                        <td class="border py-2 px-4"><input type="number" name="dal" min="0" required></td>
+                    </tr>
+                    <tr class="bg-white hover:bg-blue-50">
+                        <td class="border py-2 px-4">Vegetable Curry</td>
+                        <td class="border py-2 px-4"><input type="number" name="vegetable" min="0" required></td>
+                    </tr>
+                    <tr class="bg-white hover:bg-blue-50">
+                        <td class="border py-2 px-4">Chapathi</td>
+                        <td class="border py-2 px-4"><input type="number" name="chapathi" min="0" required></td>
+                    </tr>
+                    <tr class="bg-white hover:bg-blue-50">
+                        <td class="border py-2 px-4">Fruit Pieces</td>
+                        <td class="border py-2 px-4"><input type="number" name="fruit" min="0" required></td>
+                    </tr>
+                    <tr class="bg-white hover:bg-blue-50">
+                        <td class="border py-2 px-4">Boiled Egg</td>
+                        <td class="border py-2 px-4"><input type="number" name="boiledegg" min="0" required></td>
+                    </tr>
+                    <tr class="bg-white hover:bg-blue-200">
+                        <td class="border py-2 px-4">Student Availed</td>
+                        <td class="border py-2 px-4"><input type="number" name="students" min="0" required></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <button type="submit"
+                class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 focus:outline-none">
+                Submit
+            </button>
+
+        </form>
+    </div>
+
+    <footer class="bg-white remove:bg-gray-800 pb-10">
+        <div class="max-w-screen-xl p-4 py-6 mx-auto lg:py-5 md:p-8 lg:p-10">
+
+            <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8">
+            <div class="text-center">
+
+                <img src="{{ url_for('static', filename='assets/logo_row.png') }}" alt="All Logos" />
+
+                <span class="block text-sm text-center text-gray-500">© 2023-2024 Poshan. All
+                    Rights Reserved. Built with Love and Coffee
+                </span>
+
+            </div>
+        </div>
+    </footer>
+    {% endblock %}

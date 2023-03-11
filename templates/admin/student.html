@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% block main %}
+
+<body>
+    <header class="w-full">
+
+        <nav class="bg-white border-gray-200 py-2.5">
+
+            <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
+
+                <div class="flex gap-3">
+                    <a href="/admin" class="flex items-center">
+                        <img src="{{ url_for('static', filename='assets/logo.svg') }}" class="h-6 mr-3 sm:h-9"
+                            alt="Poshan Logo" />
+                        <span class="self-center text-xl font-semibold whitespace-nowrap">Poshan</span>
+                    </a>
+
+                    <img src="{{ url_for('static', filename='assets/g20.png') }}" class="h-6 sm:h-9" alt="G20 Logo" />
+
+                    <img src="{{ url_for('static', filename='assets/poshan.png')}}" class="h-6 sm:h-9" alt="Gov Logo" />
+                </div>
+
+                <a href="/logout"
+                    class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 focus:outline-none ">
+                    Logout
+                </a>
+            </div>
+
+        </nav>
+
+    </header>
+
+    <div class="text-center">
+        <h1 class="my-9 text-2xl font-extrabold tracking-tight md:text-3xl xl:text-5xl">
+            {{data["name"]}}
+        </h1>
+    </div>
+
+    <div class="w-full flex justify-center">
+        <div class="w-fit justify-center mt-8 drop-shadow-lg sm:grid sm:grid-cols-3 md:grid-cols-4">
+            <div class="bg-gray-100 rounded-md p-4 w-fit m-10 hover:scale-[1.1]">
+                <div class="text-lg font-medium text-gray-600">Student ID</div>
+                <div class="text-3xl font-bold text-gray-900">{{data["poshanid"]}}</div>
+            </div>
+
+            <div class="bg-gray-100 rounded-md p-4 w-fit m-10 hover:scale-[1.1]">
+                <div class="text-lg font-medium text-gray-600">School ID</div>
+                <div class="text-3xl font-bold text-gray-900">{{data["schoolid"]}}</div>
+            </div>
+
+            <div class="bg-gray-100 rounded-md p-4 w-fit m-10 hover:scale-[1.1]">
+                <div class="text-lg font-medium text-gray-600">Class</div>
+                <div class="text-3xl font-bold text-gray-900">{{data["class"]}}</div>
+            </div>
+
+            <div class="bg-gray-100 rounded-md p-4 w-fit m-10 hover:scale-[1.1]">
+                <div class="text-lg font-medium text-gray-600">Age</div>
+                <div class="text-3xl font-bold text-gray-900">{{data["age"]}}</div>
+            </div>
+
+            <div class="bg-gray-100 rounded-md p-4 w-fit m-10 hover:scale-[1.1]">
+                <div class="text-lg font-medium text-gray-600">Gender</div>
+                <div class="text-3xl font-bold text-gray-900">{{data["gender"]}}</div>
+            </div>
+
+            <div class="bg-gray-100 rounded-md p-4 w-fit m-10 hover:scale-[1.1]">
+                <div class="text-lg font-medium text-gray-600">BMI</div>
+                <div class="text-3xl font-bold text-gray-900">{{data["bmi"]}}</div>
+            </div>
+
+            <div class="bg-gray-100 rounded-md p-4 w-fit m-10 hover:scale-[1.1]">
+                <div class="text-lg font-medium text-gray-600">Average Height (in cms)</div>
+                <div class="text-3xl font-bold text-gray-900">{{data["avght"]}}</div>
+            </div>
+
+            <div class="bg-gray-100 rounded-md p-4 w-fit m-10 hover:scale-[1.1]">
+                <div class="text-lg font-medium text-gray-600">Average Weight (in kgs)</div>
+                <div class="text-3xl font-bold text-gray-900">{{data["avgwt"]}}</div>
+            </div>
+
+            <div class="bg-gray-100 rounded-md p-4 w-fit m-10 hover:scale-[1.1]">
+                <div class="text-lg font-medium text-gray-600">BMI Status</div>
+                <div class="text-3xl font-bold text-gray-900">{{data["bmistatus"]}}</div>
+            </div>
+
+            <div class="bg-gray-100 rounded-md p-4 w-fit m-10 hover:scale-[1.1]">
+                <div class="text-lg font-medium text-gray-600">Recent Feedback</div>
+                <div class="text-3xl font-bold text-gray-900">{{data["feedback"]}}</div>
+            </div>
+
+            <div class="bg-gray-100 rounded-md p-4 w-fit m-10 hover:scale-[1.1]">
+                <div class="text-lg font-medium text-gray-600">Attendance</div>
+                <div class="text-3xl font-bold text-gray-900">{{data["attendance"]}}</div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <footer class="bg-white remove:bg-gray-800 pb-10">
+        <div class="max-w-screen-xl p-4 py-6 mx-auto lg:py-5 md:p-8 lg:p-10">
+
+            <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8">
+            <div class="text-center">
+
+                <img src="{{ url_for('static', filename='assets/logo_row.png') }}" alt="All Logos" />
+
+                <span class="block text-sm text-center text-gray-500">© 2023-2024 Poshan. All
+                    Rights Reserved. Built with Love and Coffee
+                </span>
+
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+{% endblock %}

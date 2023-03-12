@@ -38,36 +38,50 @@
                     <tr class="bg-blue-100 text-blue-800">
                         <th class="py-2 px-4">Item</th>
                         <th class="py-2 px-4">Quantity (Servings)</th>
+                        <th class="py-2 px-4">Calorie</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="bg-white hover:bg-blue-50">
                         <td class="border py-2 px-4">Rice</td>
-                        <td class="border py-2 px-4"><input type="number" name="rice" min="0" required></td>
+                        <td class="border py-2 px-4"><input type="number" name="rice" min="0" required id="rice-count"
+                                class="food-count"></td>
+                        <td class="border py-2 px-4" id="rice-calorie-count">0</td>
                     </tr>
                     <tr class="bg-white hover:bg-blue-50">
                         <td class="border py-2 px-4">Dal</td>
-                        <td class="border py-2 px-4"><input type="number" name="dal" min="0" required></td>
+                        <td class="border py-2 px-4"><input type="number" name="dal" min="0" required id="dal-count"
+                                class="food-count"></td>
+                        <td class="border py-2 px-4" id="dal-calorie-count">0</td>
                     </tr>
                     <tr class="bg-white hover:bg-blue-50">
                         <td class="border py-2 px-4">Vegetable Curry</td>
-                        <td class="border py-2 px-4"><input type="number" name="vegetable" min="0" required></td>
+                        <td class="border py-2 px-4"><input type="number" name="vegetable" min="0" required
+                                id="veggie-count" class="food-count"></td>
+                        <td class="border py-2 px-4" id="veggie-calorie-count">0</td>
                     </tr>
                     <tr class="bg-white hover:bg-blue-50">
                         <td class="border py-2 px-4">Chapathi</td>
-                        <td class="border py-2 px-4"><input type="number" name="chapathi" min="0" required></td>
+                        <td class="border py-2 px-4"><input type="number" name="chapathi" min="0" required
+                                id="chapathi-count" class="food-count"></td>
+                        <td class="border py-2 px-4" id="chapathi-calorie-count">0</td>
                     </tr>
                     <tr class="bg-white hover:bg-blue-50">
                         <td class="border py-2 px-4">Fruit Pieces</td>
-                        <td class="border py-2 px-4"><input type="number" name="fruit" min="0" required></td>
+                        <td class="border py-2 px-4"><input type="number" name="fruit" min="0" required id="fruit-count"
+                                class="food-count"></td>
+                        <td class="border py-2 px-4" id="fruit-calorie-count">0</td>
                     </tr>
                     <tr class="bg-white hover:bg-blue-50">
                         <td class="border py-2 px-4">Boiled Egg</td>
-                        <td class="border py-2 px-4"><input type="number" name="boiledegg" min="0" required></td>
+                        <td class="border py-2 px-4"><input type="number" name="boiledegg" min="0" required
+                                id="egg-count" class="food-count"></td>
+                        <td class="border py-2 px-4" id="egg-calorie-count">0</td>
                     </tr>
                     <tr class="bg-white hover:bg-blue-200">
                         <td class="border py-2 px-4">Student Availed</td>
                         <td class="border py-2 px-4"><input type="number" name="students" min="0" required></td>
+                        <td class="border py-2 px-4" id="calorie-count">0</td>
                     </tr>
                 </tbody>
             </table>
@@ -95,4 +109,54 @@
             </div>
         </div>
     </footer>
-    {% endblock %}
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            function calculateCalories() {
+                const riceCalories = 100; // assume 100 calories per serving of rice
+                const dalCalories = 150; // assume 150 calories per serving of dal
+                const veggieCalories = 50; // assume 50 calories per serving of vegetable curry
+                const chapathiCalories = 120; // assume 120 calories per serving of chapathi
+                const fruitCalories = 70; // assume 70 calories per serving of fruit
+                const eggCalories = 80; // assume 80 calories per serving of boiled egg
+
+                const riceCount = parseInt(document.getElementById('rice-count').value) || 0;
+                const dalCount = parseInt(document.getElementById('dal-count').value) || 0;
+                const veggieCount = parseInt(document.getElementById('veggie-count').value) || 0;
+                const chapathiCount = parseInt(document.getElementById('chapathi-count').value) || 0;
+                const fruitCount = parseInt(document.getElementById('fruit-count').value) || 0;
+                const eggCount = parseInt(document.getElementById('egg-count').value) || 0;
+
+                //console.log(riceCount, dalCount, veggieCount, chapathiCount, fruitCount, eggCount)
+
+                const riceCalorieCount = riceCalories * riceCount;
+                const dalCalorieCount = dalCalories * dalCount;
+                const veggieCalorieCount = veggieCalories * veggieCount;
+                const chapathiCalorieCount = chapathiCalories * chapathiCount;
+                const fruitCalorieCount = fruitCalories * fruitCount;
+                const eggCalorieCount = eggCalories * eggCount;
+
+
+                const totalCalories = riceCalorieCount + dalCalorieCount + veggieCalorieCount
+                    + chapathiCalorieCount + fruitCalorieCount + eggCalorieCount;
+
+
+                document.getElementById('calorie-count').textContent = "Total - " + totalCalories;
+                document.getElementById('rice-calorie-count').textContent = riceCalorieCount;
+                document.getElementById('dal-calorie-count').textContent = dalCalorieCount;
+                document.getElementById('veggie-calorie-count').textContent = veggieCalorieCount;
+                document.getElementById('chapathi-calorie-count').textContent = chapathiCalorieCount;
+                document.getElementById('fruit-calorie-count').textContent = fruitCalorieCount;
+                document.getElementById('egg-calorie-count').textContent = eggCalorieCount;
+
+            }
+
+            // Call the function when any of the input counts change
+            document.querySelectorAll('.food-count').forEach(element => {
+                element.addEventListener('input', calculateCalories);
+            });
+        });
+
+    </script>
+</body>
+{% endblock %}

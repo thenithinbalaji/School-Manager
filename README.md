@@ -21,7 +21,7 @@ venv/scripts/activate
 pip install -r requirements.txt
 ```
 
-## Default Login Credentials
+## Sample Login Credentials
 
 ```text
 School Incharge
@@ -35,6 +35,13 @@ School Student
 --------------
 Username: student0101@poshan.in
 Password: pass
+```
+
+```text
+School Parent
+-------------
+Username: parent0101@poshan.in
+Password: pass 
 ```
 
 ```text

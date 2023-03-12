@@ -64,8 +64,23 @@
             </div>
 
             <div class="bg-gray-100 rounded-md p-4 w-fit m-10 hover:scale-[1.1]">
+                <div class="text-lg font-medium text-gray-600">Attendance</div>
+                <div class="text-3xl font-bold text-gray-900">{{data["attendance"]}}%</div>
+            </div>
+
+            <div class="bg-gray-100 rounded-md p-4 w-fit m-10 hover:scale-[1.1]">
                 <div class="text-lg font-medium text-gray-600">BMI</div>
                 <div class="text-3xl font-bold text-gray-900">{{data["bmi"]}}</div>
+            </div>
+
+            <div class="bg-gray-100 rounded-md p-4 w-fit m-10 hover:scale-[1.1]">
+                <div class="text-lg font-medium text-gray-600">Healthy BMI Range</div>
+                <div class="text-3xl font-bold text-gray-900">{{data["bmirange"]}}</div>
+            </div>
+
+            <div class="bg-gray-100 rounded-md p-4 w-fit m-10 hover:scale-[1.1]">
+                <div class="text-lg font-medium text-gray-600">BMI Variation</div>
+                <div class="text-3xl font-bold text-gray-900">{{data["bmivariation"]}}</div>
             </div>
 
             <div class="bg-gray-100 rounded-md p-4 w-fit m-10 hover:scale-[1.1]">
@@ -82,21 +97,16 @@
                 <div class="text-lg font-medium text-gray-600">BMI Status</div>
                 <div class="text-3xl font-bold text-gray-900">{{data["bmistatus"]}}</div>
             </div>
-
-            <div class="bg-gray-100 rounded-md p-4 w-fit m-10 hover:scale-[1.1]">
-                <div class="text-lg font-medium text-gray-600">Recent Feedback</div>
-                <div class="text-3xl font-bold text-gray-900">{{data["feedback"]}}</div>
-            </div>
-
-            <div class="bg-gray-100 rounded-md p-4 w-fit m-10 hover:scale-[1.1]">
-                <div class="text-lg font-medium text-gray-600">Attendance</div>
-                <div class="text-3xl font-bold text-gray-900">{{data["attendance"]}}</div>
-            </div>
-
         </div>
+
     </div>
 
-
+    <div class="flex justify-center">
+        <div class="bg-gray-100 rounded-md p-4 w-3/4 my-10 mx-10 hover:scale-[1.02] drop-shadow-lg">
+            <div class="text-lg font-medium text-gray-600">Recent Feedback</div>
+            <div class="text-3xl font-bold text-gray-900">{{data["feedback"]}}</div>
+        </div>
+    </div>
 
     <footer class="bg-white remove:bg-gray-800 pb-10">
         <div class="max-w-screen-xl p-4 py-6 mx-auto lg:py-5 md:p-8 lg:p-10">

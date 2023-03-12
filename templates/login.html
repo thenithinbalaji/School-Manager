@@ -35,13 +35,13 @@
         {% for message in messages %}
         {% if message == 'imail' %}
         <div style="background-color: rgba(255, 150, 146, 0.804); text-align:center; padding:10px; border-radius:5px;">
-            Invalid login, please try again
+            Invalid login, please try again ❌
         </div>
         {% endif %}
 
         {% if message == 'ipass' %}
         <div style="background-color: rgba(255, 191, 0, 0.978); text-align:center; padding:10px; border-radius:5px;">
-            Incorrect password, try again
+            Incorrect password, try again ❌
         </div>
         {% endif%}
 
@@ -50,7 +50,11 @@
         {% endwith %}
     </div>
 
-    <form class="flex flex-col bg-white rounded p-12" method="post">
+    <div class="mt-5">
+        <div id="google_translate_element"></div>
+    </div>
+
+    <form class="flex flex-col bg-white rounded pt-5 pb-12" method="post">
 
         <label class="font-semibold text-xs" for="usernameField">Email</label>
         <input class="flex items-center h-12 px-4 w-64 bg-gray-100 mt-2 rounded focus:outline-none focus:ring-2"

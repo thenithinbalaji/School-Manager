@@ -2,6 +2,8 @@ import pymongo, os
 from flask import Flask, flash, redirect, render_template, request, url_for, session
 import datetime
 from studentdata import studentdata
+from authdata import authdata
+from schooldata import schooldata
 import re
 
 ############################################################################
@@ -22,42 +24,12 @@ else:
     mydb = myclient[database_name]
 
     auth = mydb["auth"]
-    data = [
-        {
-            "email": "school01@poshan.in",
-            "password": "pass",
-            "poshanid": "01",
-            "type": "school",
-        },
-        {
-            "email": "student0101@poshan.in",
-            "password": "pass",
-            "poshanid": "0101",
-            "type": "student",
-        },
-        {
-            "email": "admin@poshan.in",
-            "password": "pass",
-            "poshanid": "0",
-            "type": "admin",
-        },
-    ]
+    data = authdata
     auth.insert_many(data)
 
     school = mydb["school"]
-    data = {
-        "poshanid": "01",
-        "studentscount": 40,
-        "incharge": "Mr. Sharma",
-        "contact": "912345678",
-        "address": "Nagpur",
-        "menuupdatetime": datetime.datetime.now().strftime("%x"),
-        "menu": [
-            {"rice": "1", "dal": "2", "boiledegg": "1", "students": "115"},
-            {"rice": "1", "dal": "2", "boiledegg": "1", "students": "118"},
-        ],
-    }
-    school.insert_one(data)
+    data = schooldata
+    school.insert_many(data)
 
     student = mydb["student"]
     data = studentdata
@@ -108,7 +80,7 @@ def login():
                 print("Session Cookie = ", session)
                 return redirect(url_for("admin"))
 
-            elif auth["type"] == "student":
+            elif auth["type"] == "student" or auth["type"] == "parent":
                 session["student"] = auth["poshanid"]
                 print("Session Cookie = ", session)
                 return redirect(url_for("student"))
@@ -289,11 +261,11 @@ def admin_school(poshanid):
 
                     sumofbmi += bmi
                     # Determine weight category based on BMI
-                    if bmi < 18.5:
+                    if bmi < 15:
                         uw += 1
-                    elif bmi < 25:
+                    elif bmi < 23:
                         nw += 1
-                    elif bmi < 30:
+                    elif bmi < 28:
                         ow += 1
                     else:
                         obs += 1
@@ -303,6 +275,7 @@ def admin_school(poshanid):
 
             data = {
                 "schoolid": school["poshanid"],
+                "schoolname": school["name"],
                 "location": school["address"],
                 "contact": school["contact"],
                 "menuupdate": school["menuupdatetime"],
@@ -345,14 +318,21 @@ def admin_student(poshanid):
             else:
                 bmi = bmi - (0.5 if age >= 50 else 0)
 
-            if bmi < 18.5:
+            if bmi < 15:
                 status = "Under Weight"
-            elif bmi < 25:
+            elif bmi < 23:
                 status = "Normal Weight"
-            elif bmi < 30:
+            elif bmi < 28:
                 status = "Over Weight"
             else:
                 status = "Obese"
+
+            if bmi < 15:
+                bmivariation = 15 - bmi
+            elif bmi < 23:
+                bmivariation = 0
+            else:
+                bmivariation = bmi - 23
 
             data = {
                 "name": student["name"],
@@ -370,6 +350,8 @@ def admin_student(poshanid):
                 "avght": round(height, 3),
                 "bmi": round(bmi, 3),
                 "bmistatus": status,
+                "bmirange": "15 to 22",
+                "bmivariation": round(bmivariation, 3),
             }
             return render_template("admin/student.html", data=data)
         else:
@@ -431,11 +413,11 @@ def admin():
 
             sumofbmi += bmi
             # Determine weight category based on BMI
-            if bmi < 18.5:
+            if bmi < 15:
                 uw += 1
-            elif bmi < 25:
+            elif bmi < 23:
                 nw += 1
-            elif bmi < 30:
+            elif bmi < 28:
                 ow += 1
             else:
                 obs += 1

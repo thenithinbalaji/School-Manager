@@ -273,6 +273,18 @@ def admin_school(poshanid):
             print(len(attendancelist))
             print(len(bmilist))
 
+            try:
+                menu = school["menu"][-1]
+                menustr = []
+
+                for i in menu.keys():
+                    menustr.append(i.capitalize() + " - " + str(menu[i]))
+
+                menu = menustr
+
+            except:
+                menu = "No Menu"
+
             data = {
                 "schoolid": school["poshanid"],
                 "schoolname": school["name"],
@@ -289,6 +301,7 @@ def admin_school(poshanid):
                 "obs": obs,
                 "attendancelist": attendancelist,
                 "bmilist": bmilist,
+                "menu": menu,
             }
 
             return render_template("admin/school.html", data=data)

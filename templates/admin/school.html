@@ -157,6 +157,22 @@
         </div>
     </div>
 
+    <div class="flex justify-center">
+        <div class="bg-gray-100 rounded-md p-4 w-3/4 my-10 mx-10 hover:scale-[1.02] drop-shadow-lg">
+            <div class="text-lg font-medium text-gray-600">Recent Menu Update</div>
+            <div class="text-3xl font-bold text-gray-900">
+
+                {% if data["menu"] == "No Menu" %}
+                No Menu
+                {% else %}
+                {% for i in data["menu"] %}
+                <br /> {{ i }} <br />
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
     <div class="text-center">
         <h1 class="my-9 text-2xl font-extrabold tracking-tight md:text-3xl xl:text-5xl">
             Attendance
